@@ -1,0 +1,7 @@
+packages:
+  - 'packages/productivity/*'
+  - 'packages/devtools/*'
+  - 'packages/security/*'
+  - 'packages/context/*'
+  - 'packages/media/*'
+  - 'packages/utility/*'

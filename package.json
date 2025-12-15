@@ -1,0 +1,28 @@
+{
+  "name": "mcp-toolkit",
+  "version": "1.0.0",
+  "description": "Unified MCP Server Toolkit - 25+ Model Context Protocol servers for Claude Desktop",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "clean": "pnpm -r clean"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "anthropic",
+    "ai",
+    "llm"
+  ],
+  "author": "consigcody94",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}

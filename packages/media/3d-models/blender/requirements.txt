@@ -1,0 +1,16 @@
+# Blender Python Automation Dependencies
+# Install with: pip install -r requirements.txt
+
+# Blender headless automation
+bpy==4.2.0
+
+# 3D mesh processing
+trimesh==4.0.5
+numpy==1.26.2
+scipy==1.11.4
+
+# Image processing for textures
+Pillow==10.1.0
+
+# File I/O
+PyYAML==6.0.1

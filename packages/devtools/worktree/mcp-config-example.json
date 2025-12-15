@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "worktree-wizard": {
+      "command": "worktree-wizard-mcp",
+      "args": [],
+      "cwd": "/path/to/your/git/repo"
+    }
+  }
+}

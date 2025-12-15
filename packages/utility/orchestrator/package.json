@@ -1,0 +1,40 @@
+{
+  "name": "master-claude-mcp",
+  "version": "1.0.0",
+  "description": "🎯 Master Claude - Intelligent AI orchestrator MCP that routes queries to the best local AI CLI (Gemini, GPT, DeepSeek, Claude, etc.)",
+  "type": "module",
+  "bin": {
+    "master-claude": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "mcp",
+    "ai",
+    "orchestrator",
+    "claude",
+    "gemini",
+    "gpt",
+    "deepseek",
+    "model-context-protocol",
+    "cli",
+    "router"
+  ],
+  "author": "consigcody94",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

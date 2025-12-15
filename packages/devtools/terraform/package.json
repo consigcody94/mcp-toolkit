@@ -1,0 +1,28 @@
+{
+  "name": "infra-sage",
+  "version": "1.0.0",
+  "description": "Terraform Infrastructure as Code assistant MCP server",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "infra-sage": "build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "terraform",
+    "infrastructure-as-code"
+  ],
+  "author": "consigcody94",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

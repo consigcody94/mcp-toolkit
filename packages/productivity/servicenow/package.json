@@ -1,0 +1,35 @@
+{
+  "name": "servicenow-dashboard-generator",
+  "version": "1.0.0",
+  "description": "AI-powered ServiceNow dashboard and widget generator with MCP integration",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "snow-gen": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/**/*.ts"
+  },
+  "keywords": [
+    "mcp",
+    "servicenow",
+    "dashboard",
+    "widget",
+    "generator",
+    "template",
+    "code-generation"
+  ],
+  "author": "consigcody94",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  }
+}

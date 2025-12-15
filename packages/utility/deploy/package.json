@@ -1,0 +1,31 @@
+{
+  "name": "sitefast",
+  "version": "1.0.0",
+  "description": "⚡ Deploy websites in seconds - Local deployment platform with drag-and-drop, like Netlify but fully self-hosted",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev --workspace=@sitefast/server",
+    "dev:web": "npm run dev --workspace=@sitefast/web",
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:web\"",
+    "build": "npm run build --workspace=@sitefast/web",
+    "build:all": "npm run build --workspaces",
+    "start": "npm run start --workspace=@sitefast/server",
+    "clean": "rm -rf node_modules packages/*/node_modules packages/*/dist"
+  },
+  "keywords": [
+    "deployment",
+    "netlify",
+    "coolify",
+    "self-hosted",
+    "drag-and-drop",
+    "local-development"
+  ],
+  "author": "consigcody94",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

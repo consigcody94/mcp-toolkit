@@ -1,0 +1,29 @@
+{
+  "name": "linear-flow",
+  "version": "1.0.0",
+  "description": "Linear project management MCP server",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "linear-flow": "build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "linear",
+    "project-management"
+  ],
+  "author": "consigcody94",
+  "license": "MIT",
+  "dependencies": {
+    "@linear/sdk": "^32.0.0",
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

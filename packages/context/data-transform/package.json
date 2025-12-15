@@ -1,0 +1,55 @@
+{
+  "name": "data-transform",
+  "version": "1.0.0",
+  "description": "Universal data transformation suite via MCP - Transform between CSV, JSON, XML, YAML, and more",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "data-transform": "dist/mcp-server.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "keywords": [
+    "mcp",
+    "data",
+    "transformation",
+    "csv",
+    "json",
+    "xml",
+    "yaml",
+    "excel",
+    "converter",
+    "claude",
+    "ai"
+  ],
+  "author": "consigcody94",
+  "license": "MIT",
+  "dependencies": {
+    "papaparse": "^5.4.1",
+    "fast-xml-parser": "^4.3.2",
+    "yaml": "^2.3.4",
+    "xlsx": "^0.18.5",
+    "ajv": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/papaparse": "^5.3.14",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.11",
+    "ts-jest": "^29.1.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

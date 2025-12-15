@@ -1,0 +1,35 @@
+{
+  "name": "cosmic-atlas",
+  "version": "1.0.0",
+  "description": "Comprehensive space data platform aggregating live data from 50+ APIs including satellites, telescopes, Mars rovers, ISS tracking, space weather, and more",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces",
+    "build": "npm run build --workspaces",
+    "start": "npm run start --workspace=@cosmic-atlas/backend",
+    "lint": "npm run lint --workspaces",
+    "test": "npm run test --workspaces"
+  },
+  "keywords": [
+    "space",
+    "nasa",
+    "satellites",
+    "iss",
+    "mars",
+    "exoplanets",
+    "astronomy",
+    "space-weather",
+    "api",
+    "real-time",
+    "3d-visualization"
+  ],
+  "author": "consigcody94",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/consigcody94/cosmic-atlas.git"
+  }
+}

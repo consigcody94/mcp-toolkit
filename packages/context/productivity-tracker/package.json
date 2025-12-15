@@ -1,0 +1,29 @@
+{
+  "name": "dev-mirror",
+  "version": "1.0.0",
+  "description": "Productivity metrics tracker MCP server - solving the 19% slower paradox",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "dev-mirror": "build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "productivity",
+    "metrics",
+    "developer-experience"
+  ],
+  "author": "consigcody94",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

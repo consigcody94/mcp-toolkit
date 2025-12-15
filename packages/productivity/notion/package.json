@@ -1,0 +1,35 @@
+{
+  "name": "notion-weaver",
+  "version": "1.0.0",
+  "description": "Notion workspace automation MCP server",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "notion-weaver": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "watch": "tsc --watch",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "notion",
+    "automation",
+    "workspace",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "@notionhq/client": "^2.2.15"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "vault-weaver",
+  "version": "1.0.0",
+  "description": "Obsidian knowledge management MCP server",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "vault-weaver": "build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "obsidian",
+    "knowledge-management"
+  ],
+  "author": "consigcody94",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

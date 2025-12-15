@@ -1,0 +1,60 @@
+{
+  "general": {
+    "outputDir": "./output",
+    "tempDir": "./temp",
+    "logLevel": "INFO",
+    "maxConcurrentTasks": 3
+  },
+  "models": {
+    "modelDir": "./models",
+    "autoDownload": false,
+    "paths": {
+      "hunyuan3d": "./models/hunyuan3d-2",
+      "triposr": "./models/triposr",
+      "dreamfusion": "./models/stable-dreamfusion",
+      "instantmesh": "./models/instantmesh"
+    },
+    "gpu": {
+      "enabled": true,
+      "deviceId": 0,
+      "memoryLimit": 8
+    }
+  },
+  "blender": {
+    "executablePath": "/usr/bin/blender",
+    "timeout": 300,
+    "headless": true
+  },
+  "defaults": {
+    "qualityMode": "balanced",
+    "targetPolyCount": 30000,
+    "textureResolution": 2048,
+    "generateLODs": true,
+    "autoRig": true,
+    "outputFormats": ["fbx", "obj", "gltf"]
+  },
+  "platforms": {
+    "vrchat": {
+      "enabled": true,
+      "pcPolyLimit": 70000,
+      "questPolyLimit": 20000
+    },
+    "imvu": {
+      "enabled": true,
+      "polyLimit": 35000
+    },
+    "secondlife": {
+      "enabled": true,
+      "polyLimit": 65000,
+      "generateLODs": true
+    }
+  },
+  "advanced": {
+    "cacheEnabled": true,
+    "cacheSizeMB": 1000,
+    "retryAttempts": 3,
+    "retryDelay": 1000,
+    "enablePreview": true,
+    "previewResolution": 512
+  }
+}

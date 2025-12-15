@@ -1,0 +1,23 @@
+{
+  "name": "sheets-wizard",
+  "version": "1.0.0",
+  "description": "Google Sheets automation MCP server",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "start": "node dist/index.js"
+  },
+  "keywords": ["mcp", "google-sheets", "automation"],
+  "author": "consigcody94",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "googleapis": "^144.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

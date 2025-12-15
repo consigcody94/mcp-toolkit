@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "master-claude": {
+      "command": "node",
+      "args": ["/home/YOUR_USERNAME/projects/master-claude/dist/index.js"]
+    }
+  }
+}

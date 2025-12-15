@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceNow Dashboard Generator - Enterprise Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <style>
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(40px);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(147, 197, 253, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(147, 197, 253, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .slide-down {
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .feature-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .tech-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .input-modern {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(148, 163, 184, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .input-modern:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            outline: none;
+        }
+
+        .code-container {
+            background: #1e293b;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .shimmer-text {
+            background: linear-gradient(
+                90deg,
+                #93c5fd 0%,
+                #ffffff 50%,
+                #93c5fd 100%
+            );
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .enterprise-icon {
+            font-size: 3rem;
+            filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.3));
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated grid background -->
+    <div class="grid-background"></div>
+
+    <div class="relative z-10 container mx-auto px-4 py-12 max-w-7xl">
+        <!-- Header -->
+        <div class="text-center mb-16 slide-down">
+            <div class="tech-badge text-white mb-4">
+                Enterprise-Grade Platform
+            </div>
+            <h1 class="text-7xl font-black mb-6 tracking-tight">
+                <span class="shimmer-text">ServiceNow</span>
+                <br>
+                <span class="text-white">Dashboard Generator</span>
+            </h1>
+            <p class="text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+                AI-powered platform for generating production-ready ServiceNow dashboards and widgets
+                with intelligent code generation
+            </p>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <a href="https://github.com/consigcody94/servicenow-dashboard-generator"
+                   class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center gap-2">
+                    <span>⭐</span> View on GitHub
+                </a>
+                <a href="#demo"
+                   class="btn-secondary text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center gap-2">
+                    <span>🚀</span> Try Live Demo
+                </a>
+            </div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="glass rounded-2xl p-8 mb-16 fade-in-up" style="animation-delay: 0.2s;">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-black text-blue-300 mb-2">8</div>
+                    <div class="text-blue-100 font-medium">MCP Tools</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black text-blue-300 mb-2">6</div>
+                    <div class="text-blue-100 font-medium">Widget Types</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black text-blue-300 mb-2">4</div>
+                    <div class="text-blue-100 font-medium">Table Styles</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black text-blue-300 mb-2">100%</div>
+                    <div class="text-blue-100 font-medium">Type Safe</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+            <div class="glass-strong p-8 rounded-2xl feature-card fade-in-up" style="animation-delay: 0.3s;">
+                <div class="enterprise-icon mb-4">⚡</div>
+                <h3 class="text-2xl font-bold mb-3 text-gray-900">Instant Generation</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Generate production-ready ServiceNow widgets in seconds with intelligent code synthesis and best practices
+                </p>
+            </div>
+            <div class="glass-strong p-8 rounded-2xl feature-card fade-in-up" style="animation-delay: 0.4s;">
+                <div class="enterprise-icon mb-4">🎯</div>
+                <h3 class="text-2xl font-bold mb-3 text-gray-900">Smart Tables</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Auto-detect column types, apply intelligent styling, and generate sortable, filterable data tables
+                </p>
+            </div>
+            <div class="glass-strong p-8 rounded-2xl feature-card fade-in-up" style="animation-delay: 0.5s;">
+                <div class="enterprise-icon mb-4">🎨</div>
+                <h3 class="text-2xl font-bold mb-3 text-gray-900">Beautiful UI</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Responsive, modern designs with smooth animations, gradient styling, and enterprise-grade aesthetics
+                </p>
+            </div>
+        </div>
+
+        <!-- Live Demo -->
+        <div id="demo" class="glass-strong rounded-2xl p-10 mb-12 fade-in-up" style="animation-delay: 0.6s;">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-2xl">
+                    🎨
+                </div>
+                <h2 class="text-4xl font-black text-gray-900">Live Demo</h2>
+            </div>
+
+            <!-- Form -->
+            <div class="mb-10 space-y-6">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-3 uppercase tracking-wide">Dashboard Name</label>
+                    <input type="text" id="dashboardName"
+                           value="Incident Management Dashboard"
+                           class="input-modern w-full rounded-xl px-6 py-4 text-lg font-medium">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-3 uppercase tracking-wide">Table Name</label>
+                    <input type="text" id="tableName"
+                           value="incident"
+                           class="input-modern w-full rounded-xl px-6 py-4 text-lg font-medium">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-3 uppercase tracking-wide">Table Style</label>
+                    <select id="tableStyle" class="input-modern w-full rounded-xl px-6 py-4 text-lg font-medium">
+                        <option value="list">📋 List View - Traditional striped table</option>
+                        <option value="grid">🔲 Grid View - Bordered cells</option>
+                        <option value="card">🎴 Card View - Responsive cards</option>
+                        <option value="compact">📊 Compact View - Dense layout</option>
+                    </select>
+                </div>
+
+                <button onclick="generateWidget()"
+                        class="btn-primary w-full text-white py-5 rounded-xl font-bold text-xl tracking-wide">
+                    ✨ Generate Production Code
+                </button>
+            </div>
+
+            <!-- Generated Code -->
+            <div id="output" class="hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-black text-gray-900 flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-lg bg-green-500 flex items-center justify-center text-white">✓</span>
+                        Generated Code
+                    </h3>
+                    <button onclick="downloadCode()"
+                            class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-xl hover:shadow-lg transition font-bold flex items-center gap-2">
+                        <span>📥</span> Download
+                    </button>
+                </div>
+                <div class="code-container overflow-hidden">
+                    <pre class="overflow-auto max-h-96 p-6"><code id="codeOutput" class="language-javascript"></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Installation -->
+        <div class="glass-strong rounded-2xl p-10 fade-in-up" style="animation-delay: 0.7s;">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-2xl">
+                    📦
+                </div>
+                <h2 class="text-3xl font-black text-gray-900">Quick Start</h2>
+            </div>
+            <div class="bg-gray-900 rounded-xl p-6 overflow-auto">
+                <code class="text-gray-100 font-mono text-sm leading-loose">
+<span class="text-green-400"># Install via npm</span>
+npm install -g servicenow-dashboard-generator
+
+<span class="text-green-400"># Generate a dashboard interactively</span>
+snow-gen create-dashboard
+
+<span class="text-green-400"># Or use with Claude Desktop via MCP</span>
+<span class="text-blue-400"># See README.md for MCP setup instructions</span>
+                </code>
+            </div>
+        </div>
+
+        <!-- Tech Stack Footer -->
+        <div class="text-center mt-16 text-blue-100">
+            <p class="text-sm uppercase tracking-wider font-semibold mb-3">Built With</p>
+            <div class="flex justify-center gap-4 flex-wrap text-xs font-mono">
+                <span class="px-4 py-2 glass rounded-lg">TypeScript 5.3</span>
+                <span class="px-4 py-2 glass rounded-lg">MCP Protocol</span>
+                <span class="px-4 py-2 glass rounded-lg">ServiceNow</span>
+                <span class="px-4 py-2 glass rounded-lg">AngularJS</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateWidget() {
+            const name = document.getElementById('dashboardName').value;
+            const table = document.getElementById('tableName').value;
+            const style = document.getElementById('tableStyle').value.split(' ')[0];
+
+            // Simplified widget generation (actual implementation uses TypeScript generators)
+            const code = `// ServiceNow Widget: ${name}
+(function() {
+  // Client Controller
+  function($scope, spUtil) {
+    var c = this;
+    c.data.table = '${table}';
+    c.data.style = '${style}';
+
+    // Load records from server
+    c.server.get({
+      table: c.data.table,
+      limit: 20
+    }).then(function(response) {
+      c.data.records = response.records;
+      c.data.totalCount = response.count;
+    });
+
+    // Sorting functionality
+    c.sortBy = function(field) {
+      if (c.data.sortField === field) {
+        c.data.sortReverse = !c.data.sortReverse;
+      } else {
+        c.data.sortField = field;
+        c.data.sortReverse = false;
+      }
+    };
+
+    // Export to CSV
+    c.exportCSV = function() {
+      var csv = c.data.records.map(function(r) {
+        return [r.number, r.priority, r.state, r.assigned_to].join(',');
+      }).join('\\n');
+
+      var blob = new Blob([csv], { type: 'text/csv' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = '${table}_export.csv';
+      a.click();
+    };
+  }
+})();
+
+/* CSS - Beautiful ${style} styling with gradients and animations */
+.widget-${table} {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.widget-${table}:hover {
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.18);
+  transform: translateY(-4px);
+}
+
+.widget-${table}-table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.widget-${table}-header {
+  background: linear-gradient(135deg, #4F46E5 0%, #3730A3 100%);
+  color: white;
+  padding: 16px 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
+
+.widget-${table}-row {
+  padding: 16px 20px;
+  border-bottom: 1px solid #E5E7EB;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.widget-${table}-row:hover {
+  background: linear-gradient(90deg, #F9FAFB 0%, #F3F4F6 100%);
+  transform: translateX(8px);
+  box-shadow: -4px 0 0 0 #4F46E5;
+}
+
+.widget-${table}-row:last-child {
+  border-bottom: none;
+}
+
+.btn-export {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+}
+
+.btn-export:hover {
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
+}
+
+/* HTML Template */
+<div class="widget-${table}">
+  <div class="widget-header">
+    <h2 style="color: white; margin: 0; font-size: 1.5rem;">{{c.data.title}}</h2>
+    <p style="color: rgba(255,255,255,0.8); margin: 8px 0 0;">
+      {{c.data.totalCount}} total records
+    </p>
+  </div>
+
+  <table class="widget-${table}-table">
+    <thead>
+      <tr class="widget-${table}-header">
+        <th ng-click="c.sortBy('number')">Number</th>
+        <th ng-click="c.sortBy('priority')">Priority</th>
+        <th ng-click="c.sortBy('state')">State</th>
+        <th ng-click="c.sortBy('assigned_to')">Assigned To</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="record in c.data.records | orderBy:c.data.sortField:c.data.sortReverse"
+          class="widget-${table}-row">
+        <td><strong>{{record.number}}</strong></td>
+        <td>
+          <span class="badge badge-priority-{{record.priority}}">
+            {{record.priority_label}}
+          </span>
+        </td>
+        <td>
+          <span class="badge badge-state-{{record.state}}">
+            {{record.state_label}}
+          </span>
+        </td>
+        <td>{{record.assigned_to.display_value}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button ng-click="c.exportCSV()" class="btn-export">
+    📥 Export to CSV
+  </button>
+</div>
+
+/* Server Script - GlideRecord query */
+(function() {
+  data.table = input.table || 'incident';
+
+  var gr = new GlideRecord(data.table);
+  gr.addActiveQuery();
+  gr.orderByDesc('sys_created_on');
+  gr.setLimit(20);
+  gr.query();
+
+  data.records = [];
+  while (gr.next()) {
+    data.records.push({
+      number: gr.getValue('number'),
+      priority: gr.getValue('priority'),
+      priority_label: gr.getDisplayValue('priority'),
+      state: gr.getValue('state'),
+      state_label: gr.getDisplayValue('state'),
+      assigned_to: {
+        value: gr.getValue('assigned_to'),
+        display_value: gr.getDisplayValue('assigned_to')
+      }
+    });
+  }
+
+  data.count = gr.getRowCount();
+})();`;
+
+            document.getElementById('codeOutput').textContent = code;
+            document.getElementById('output').classList.remove('hidden');
+            Prism.highlightElement(document.getElementById('codeOutput'));
+
+            // Smooth scroll to output
+            document.getElementById('output').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function downloadCode() {
+            const code = document.getElementById('codeOutput').textContent;
+            const blob = new Blob([code], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            const name = document.getElementById('dashboardName').value.toLowerCase().replace(/ /g, '-');
+            a.href = url;
+            a.download = `servicenow-widget-${name}.js`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

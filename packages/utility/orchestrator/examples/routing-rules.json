@@ -1,0 +1,63 @@
+{
+  "routingRules": [
+    {
+      "name": "Code Questions → DeepSeek",
+      "keywords": ["code", "programming", "debug", "function", "class", "algorithm", "syntax"],
+      "preferredProvider": "deepseek",
+      "requireCapabilities": ["code"],
+      "rationale": "DeepSeek is optimized for code ($0.14/M tokens, 9/10 speed)"
+    },
+    {
+      "name": "Reasoning & Analysis → Claude",
+      "keywords": ["explain", "analyze", "reasoning", "think", "logic", "philosophy", "ethics"],
+      "preferredProvider": "claude",
+      "requireCapabilities": ["reasoning"],
+      "rationale": "Claude excels at reasoning (10/10 quality)"
+    },
+    {
+      "name": "Quick Simple Questions → Gemini",
+      "keywords": ["quick", "fast", "simple", "what is", "define"],
+      "preferredProvider": "gemini",
+      "maxCost": 1,
+      "rationale": "Gemini is fast and cheap for simple queries ($0.50/M tokens, 8/10 speed)"
+    },
+    {
+      "name": "Vision & Image Analysis → Gemini or Claude",
+      "keywords": ["image", "picture", "photo", "visual", "diagram", "screenshot"],
+      "requireCapabilities": ["vision"],
+      "rationale": "Both Gemini and Claude support vision, routing selects best available"
+    },
+    {
+      "name": "Long Context → Claude or Gemini",
+      "keywords": ["document", "analyze file", "long", "entire", "full text"],
+      "requireCapabilities": ["long-context"],
+      "rationale": "Claude and Gemini support long context windows"
+    },
+    {
+      "name": "Maximum Quality → Claude",
+      "pattern": "critical|important|production|review",
+      "preferredProvider": "claude",
+      "minQuality": 9,
+      "rationale": "Claude provides highest quality (10/10) for critical decisions"
+    },
+    {
+      "name": "Budget-Conscious → DeepSeek",
+      "maxCost": 0.5,
+      "preferredProvider": "deepseek",
+      "rationale": "DeepSeek is cheapest option ($0.14/M tokens) while maintaining quality"
+    }
+  ],
+  "costOptimization": true,
+  "speedOptimization": false,
+  "qualityOptimization": true,
+  "enableConsensus": false,
+  "consensusMinModels": 3,
+  "consensusMaxModels": 5,
+  "notes": [
+    "Keywords are case-insensitive and matched against the query text",
+    "Pattern uses regex matching (more flexible than keywords)",
+    "First matching rule wins, so order matters",
+    "If no rules match, optimization settings determine the best model",
+    "You can combine multiple optimization modes (cost + quality balancing)"
+  ]
+}

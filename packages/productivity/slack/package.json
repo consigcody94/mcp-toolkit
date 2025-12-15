@@ -1,0 +1,23 @@
+{
+  "name": "slack-sage",
+  "version": "1.0.0",
+  "description": "Team communication intelligence MCP server for Slack",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "start": "node dist/index.js"
+  },
+  "keywords": ["mcp", "slack", "communication"],
+  "author": "consigcody94",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "@slack/web-api": "^7.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

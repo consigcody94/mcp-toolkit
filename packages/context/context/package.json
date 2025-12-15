@@ -1,0 +1,37 @@
+{
+  "name": "context-pilot",
+  "version": "1.0.0",
+  "description": "MCP server that builds living project context for AI assistants - solves the #1 missing context problem",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "context-pilot": "dist/mcp-server.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/mcp-server.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "mcp",
+    "context",
+    "ai",
+    "claude",
+    "copilot",
+    "codebase-analysis",
+    "semantic-analysis",
+    "code-intelligence"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^20.10.5",
+    "typescript": "^5.3.3",
+    "glob": "^10.3.10",
+    "ignore": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

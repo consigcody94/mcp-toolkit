@@ -1,0 +1,13 @@
+{
+  "name": "ts-pilot",
+  "version": "1.0.0",
+  "description": "MCP server optimized for TypeScript development - deep type system understanding, strict types, framework-aware",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": { "ts-pilot": "dist/mcp-server.js" },
+  "scripts": { "build": "tsc", "start": "node dist/mcp-server.js" },
+  "keywords": ["mcp", "typescript", "ai", "type-safety", "strict-mode"],
+  "license": "MIT",
+  "dependencies": { "@types/node": "^20.10.5", "typescript": "^5.3.3" },
+  "engines": { "node": ">=18.0.0" }
+}

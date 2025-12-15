@@ -1,0 +1,36 @@
+{
+  "name": "sentinel-ai",
+  "version": "1.0.0",
+  "description": "AI code security scanner MCP server - Addresses 322% increase in privilege escalation vulnerabilities",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "sentinel-ai": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "watch": "tsc --watch",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "security",
+    "scanner",
+    "ai",
+    "vulnerabilities",
+    "owasp",
+    "code-analysis"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

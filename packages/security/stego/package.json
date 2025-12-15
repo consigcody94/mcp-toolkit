@@ -1,0 +1,23 @@
+{
+  "name": "stegcrypt-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server for Steganography, Cryptography, and Hidden Data Detection",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "sharp": "^0.33.5",
+    "file-type": "^19.6.0",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "typescript": "^5.7.2",
+    "tsx": "^4.19.2"
+  }
+}

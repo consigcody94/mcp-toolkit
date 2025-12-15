@@ -1,0 +1,36 @@
+{
+  "name": "code-memory",
+  "version": "1.0.0",
+  "description": "Codebase context vault MCP server - solves the 65% missing context problem",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "code-memory": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "watch": "tsc --watch",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "codebase",
+    "context",
+    "memory",
+    "ai",
+    "search",
+    "vault"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "title": "MCP Server Generator",
+  "description": "Generate a complete MCP server from your OpenAPI/Swagger specification",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "openApiSource": {
+      "title": "OpenAPI Source",
+      "type": "string",
+      "description": "URL to OpenAPI/Swagger spec (JSON or YAML) or paste the spec directly",
+      "editor": "textarea",
+      "prefill": "https://petstore.swagger.io/v2/swagger.json"
+    },
+    "language": {
+      "title": "Output Language",
+      "type": "string",
+      "description": "Programming language for generated MCP server",
+      "editor": "select",
+      "enum": ["typescript", "python"],
+      "enumTitles": ["TypeScript", "Python"],
+      "default": "typescript"
+    },
+    "serverName": {
+      "title": "Server Name",
+      "type": "string",
+      "description": "Name for your MCP server (will be used in package name and documentation)",
+      "editor": "textfield",
+      "pattern": "^[a-z0-9-]+$",
+      "default": "my-mcp-server"
+    },
+    "includeAllEndpoints": {
+      "title": "Include All Endpoints",
+      "type": "boolean",
+      "description": "Generate tools for all API endpoints. If false, you can filter by tags.",
+      "default": true
+    },
+    "filterTags": {
+      "title": "Filter by Tags",
+      "type": "array",
+      "description": "Only generate tools for endpoints with these OpenAPI tags (only used if 'Include All Endpoints' is false)",
+      "editor": "stringList",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "includeAuth": {
+      "title": "Include Authentication",
+      "type": "boolean",
+      "description": "Generate authentication handling code for API keys, OAuth, or Bearer tokens",
+      "default": true
+    },
+    "generateTests": {
+      "title": "Generate Tests",
+      "type": "boolean",
+      "description": "Include unit test templates for generated MCP tools",
+      "default": false
+    }
+  },
+  "required": ["openApiSource"]
+}

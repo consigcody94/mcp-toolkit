@@ -1,0 +1,48 @@
+{
+  "name": "social-media-mcp",
+  "version": "2.0.0",
+  "description": "Advanced MCP server for managing social media across Twitter, LinkedIn, Facebook, Instagram, TikTok, and YouTube",
+  "main": "build/index.js",
+  "type": "module",
+  "bin": {
+    "social-media-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsc --watch",
+    "clean": "rm -rf build",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "social-media",
+    "twitter",
+    "linkedin",
+    "facebook",
+    "instagram",
+    "tiktok",
+    "youtube",
+    "automation",
+    "claude"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/uuid": "^10.0.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.22.0",
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "form-data": "^4.0.0",
+    "uuid": "^11.1.0",
+    "zod": "^4.1.13",
+    "zod-to-json-schema": "^3.25.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

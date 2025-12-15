@@ -1,0 +1,48 @@
+{
+  "excel": [
+    "create_excel",
+    "excel_add_pivot_table",
+    "excel_add_chart",
+    "excel_add_formula",
+    "excel_conditional_formatting",
+    "excel_data_validation",
+    "excel_freeze_panes",
+    "excel_filter_sort",
+    "excel_format_cells",
+    "excel_named_range",
+    "excel_protect_sheet",
+    "excel_merge_workbooks",
+    "excel_find_replace",
+    "excel_to_json",
+    "excel_to_csv"
+  ],
+  "word": [
+    "create_word",
+    "word_add_toc",
+    "word_mail_merge",
+    "word_find_replace",
+    "word_add_comment",
+    "word_format_styles",
+    "word_insert_image",
+    "word_add_header_footer",
+    "word_compare_documents",
+    "word_to_pdf"
+  ],
+  "powerpoint": [
+    "create_powerpoint",
+    "ppt_add_transition",
+    "ppt_add_animation",
+    "ppt_add_notes",
+    "ppt_duplicate_slide",
+    "ppt_reorder_slides",
+    "ppt_export_pdf",
+    "ppt_add_media"
+  ],
+  "outlook": [
+    "outlook_send_email",
+    "outlook_create_meeting",
+    "outlook_add_contact",
+    "outlook_create_task",
+    "outlook_set_rule"
+  ]
+}

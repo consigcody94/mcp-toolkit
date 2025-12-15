@@ -1,0 +1,24 @@
+{
+  "name": "ticket-tamer",
+  "version": "1.0.0",
+  "description": "Jira project management MCP server",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "start": "node dist/index.js"
+  },
+  "keywords": ["mcp", "jira", "project-management"],
+  "author": "consigcody94",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "jira-client": "^8.2.2"
+  },
+  "devDependencies": {
+    "@types/jira-client": "^7.1.9",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "actorSpecification": 1,
+  "name": "mcp-server-generator",
+  "title": "MCP Server Generator from OpenAPI",
+  "description": "Automatically generate production-ready Model Context Protocol (MCP) servers from OpenAPI/Swagger specs. Outputs complete TypeScript or Python MCP server with tools, types, validation, error handling, and documentation. Saves hours of boilerplate coding.",
+  "version": "1.0.0",
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile",
+  "readme": "./README.md"
+}
